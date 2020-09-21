@@ -1,5 +1,7 @@
 package org.launchcode.techjobs_oo.Tests;
 
+//How do you use @Before and not @BeforeClass? My id was wrong when I used @Before
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
@@ -67,12 +69,6 @@ public class JobTest {
     @Test
     public void testEmptyFieldInToString() {
         Job job4 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Recognize a Coyote"));
-        assertTrue(job4.toString().contains("Data not available"));
-    }
-
-    @Test
-    public void testNullFieldInToString() {
-        Job job4 = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Recognize a Coyote"));
         assertTrue(job4.toString().contains("Data not available"));
     }
 }
