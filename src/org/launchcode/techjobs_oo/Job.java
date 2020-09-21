@@ -1,5 +1,7 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.ArrayList;
+
 public class Job {
 
     private int id;
@@ -44,6 +46,37 @@ public class Job {
         Job job = (Job) o;
         return getId() == job.getId();
     }
+
+    @Override
+    public String toString() {
+
+        ArrayList<String> jobInfoArray = new ArrayList<String>();
+
+        jobInfoArray.add(Integer.toString(id));
+        jobInfoArray.add(name);
+        jobInfoArray.add(employer.toString());
+        jobInfoArray.add(location.toString());
+        jobInfoArray.add(positionType.toString());
+        jobInfoArray.add(coreCompetency.toString());
+
+        for(int i = 0; i<jobInfoArray.size();i++){
+            if (jobInfoArray.get(i).equals("")) {
+                jobInfoArray.set(i, "Data not available");
+            }
+        }
+
+        String htmlarray = "" +
+            "\nID: " + jobInfoArray.get(0) +
+            "\nName: " + jobInfoArray.get(1) +
+            "\nEmployer: " + jobInfoArray.get(2) +
+            "\nLocation: " + jobInfoArray.get(3) +
+            "\nPosition type: " + jobInfoArray.get(4) +
+            "\nCore Competency: " + jobInfoArray.get(5) +
+            "";
+
+        return htmlarray;
+    }
+
 
     // DONE* TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
