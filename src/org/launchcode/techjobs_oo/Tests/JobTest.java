@@ -71,4 +71,11 @@ public class JobTest {
         Job job4 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Recognize a Coyote"));
         assertTrue(job4.toString().contains("Data not available"));
     }
+
+    @Test
+    public void testEmptyJobInToString() {
+        Job job4 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        assertTrue(job4.toString().contains("OOPS"));
+        System.out.println(job4.toString());
+    }
 }

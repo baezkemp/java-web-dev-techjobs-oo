@@ -6,6 +6,7 @@ public class Job {
 
     private int id;
     private static int nextId = 1;
+    private static String emptyVariable = "Data not available";
 
     private String name;
     private Employer employer;
@@ -50,7 +51,7 @@ public class Job {
     @Override
     public String toString() {
 
-        ArrayList<String> jobInfoArray = new ArrayList<String>();
+        ArrayList<String> jobInfoArray = new ArrayList<>();
 
         jobInfoArray.add(Integer.toString(id));
         jobInfoArray.add(name);
@@ -61,20 +62,29 @@ public class Job {
 
         for(int i = 0; i<jobInfoArray.size();i++){
             if (jobInfoArray.get(i).equals("")) {
-                jobInfoArray.set(i, "Data not available");
+                jobInfoArray.set(i, emptyVariable);
             }
         }
 
-        String htmlarray = "" +
-            "\nID: " + jobInfoArray.get(0) +
-            "\nName: " + jobInfoArray.get(1) +
-            "\nEmployer: " + jobInfoArray.get(2) +
-            "\nLocation: " + jobInfoArray.get(3) +
-            "\nPosition type: " + jobInfoArray.get(4) +
-            "\nCore Competency: " + jobInfoArray.get(5) +
-            "";
+//        Is there is a better way to do this next part...
+        if(jobInfoArray.get(1).equals(emptyVariable)&&
+                jobInfoArray.get(2).equals(emptyVariable)&&
+                jobInfoArray.get(3).equals(emptyVariable) &&
+                jobInfoArray.get(4).equals(emptyVariable) &&
+                jobInfoArray.get(5).equals(emptyVariable)){
+            return "OOPS! This job does not seem to exist.";
+        } else {
+            String htmlarray = "" +
+                    "\nID: " + jobInfoArray.get(0) +
+                    "\nName: " + jobInfoArray.get(1) +
+                    "\nEmployer: " + jobInfoArray.get(2) +
+                    "\nLocation: " + jobInfoArray.get(3) +
+                    "\nPosition type: " + jobInfoArray.get(4) +
+                    "\nCore Competency: " + jobInfoArray.get(5) +
+                    "";
 
-        return htmlarray;
+            return htmlarray;
+        }
     }
 
 
